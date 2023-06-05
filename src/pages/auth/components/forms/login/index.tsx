@@ -40,6 +40,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({changeForm}) => {
                 initialValues={{username: "", password: "",}}
                 validationSchema={loginSchema}
                 onSubmit={async (values) => {
+                    console.log(values,"in")
                     await login(values)
                     navigate(routes.home)
                 }}
@@ -88,7 +89,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({changeForm}) => {
                         <p className={"err"}>{errors.password && touched.password && errors.password}</p>
 
 
-                        <button className={"form__button"} type="submit">
+                        <button className={"form__button"} type="submit" disabled={false}>
                             Submit
                         </button>
                     </form>

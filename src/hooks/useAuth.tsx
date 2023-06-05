@@ -1,16 +1,25 @@
 import {AxiosInstance} from "../congif"
-import {API_LOGIN, API_LOGOUT, API_REGISTER, LoginFormInterface, RegisterFromInterface, token} from "../static"
+import {
+    API_BASE_URL,
+    API_LOGIN,
+    API_LOGOUT,
+    API_REGISTER,
+    LoginFormInterface,
+    RegisterFromInterface,
+    token
+} from "../static"
 import {useAppDispatch} from "../store/hooks"
 import {setAuth, setUser} from "../store/slices/userSlice"
+import axios from "axios";
 
 
 export default function useAuth() {
     const dispatch = useAppDispatch()
-    const login = async (values: LoginFormInterface) => {
+    const login = async (values:LoginFormInterface) => {
         try {
-            const res = await AxiosInstance.post(`${API_LOGIN}`, values)
-            dispatch(setAuth(res))
-            localStorage.setItem(token, JSON.stringify(res))
+            const res = await axios.post(`${API_BASE_URL}${API_LOGIN}`, {...values})
+            dispatch(setAuth(res.data))
+            localStorage.setItem(token, JSON.stringify(res.data))
 
         } catch (err: any) {
             alert(err?.response.data.message)
@@ -18,9 +27,9 @@ export default function useAuth() {
     }
     const register = async (data: RegisterFromInterface) => {
         try {
-            const res = await AxiosInstance.post(`${API_REGISTER}`, data)
-            dispatch(setUser(res))
-            localStorage.setItem(token, JSON.stringify(res))
+            const res = await axios.post(`${API_REGISTER}`, data)
+            dispatch(setUser(res.data))
+            localStorage.setItem(token, JSON.stringify(res.data))
 
         } catch (err: any) {
             alert(err?.response.data.message)

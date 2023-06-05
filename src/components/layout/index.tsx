@@ -1,5 +1,5 @@
 import React from "react";
-import { redirect } from "react-router";
+import { Navigate } from "react-router-dom";
 import {Logo} from "..";
 import { routes } from "../../router/routes";
 import { useAppSelector } from "../../store/hooks";
@@ -12,9 +12,9 @@ type LayoutTypes = {
 
 export const Layout: React.FC<LayoutTypes> = ({children}) => {
     const {isAuth} = useAppSelector((state)=>state.user)
-    
+    console.log(isAuth)
     if(!isAuth){
-        redirect(routes.login)
+        return <Navigate to={routes.login} />
     }
     
     return <div className={"layout"}>
