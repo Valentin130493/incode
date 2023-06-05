@@ -1,0 +1,25 @@
+@import "src/styles/base/variables";
+
+.logo__wrapper{
+  padding: $padding-page;
+}
+
+.logo_title {
+  color: $white-color;
+  font-weight: 700;
+  font-size: $font-size-logo;
+  line-height: 54px;
+  padding: 0;
+  margin: 0;
+  max-width: 134px;
+}
+
+.logo_text {
+  color: $green-color;
+  font-weight: 600;
+  font-size: $font-size-md;
+  line-height: 25px;
+  padding: 0;
+  margin: 0;
+  max-width: 66px;
+}

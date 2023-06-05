@@ -1,0 +1,106 @@
+@import "src/styles/base/variables";
+
+.form__wrapper {
+  max-width: 424px;
+  width: 100%;
+  background-color: $black-color;
+  padding: $padding-page;
+  height: 100vh;
+}
+
+.form__header {
+  color: $white-color;
+  font-weight: 700;
+  font-size: $font-size-title;
+  line-height: 84px;
+  letter-spacing: 0.03em;
+  margin: 72px 0 0 0;
+}
+
+.form__form {
+  display: flex;
+  flex-direction: column;
+
+  .form__input {
+
+    width: 100%;
+
+    .MuiTextField-root {
+      &:active, &:hover, &::before, &::after, &:focus, &:focus-visible, &:focus-within {
+        outline: none;
+        border: none;
+        text-decoration: none;
+        text-underline: none;
+      }
+    }
+
+    input {
+      outline: $white-color;
+      color: $white-color;
+      border-bottom: 2px $white-color solid;
+      font-size: $font-size-sm;
+    }
+
+    label {
+      color: $white-color;
+      font-size: $font-size-sm;
+    }
+
+    &:active, &:hover, &::before, &::after, &:focus, &:focus-visible, &:focus-within {
+      outline: none;
+      border: none;
+    }
+
+
+  }
+
+  .password_box {
+    width: 100%;
+    position: relative;
+
+    button {
+      background-color: transparent;
+      color: $white-color;
+      border: none;
+      position: absolute;
+      right: 0;
+      top: 45%;
+      cursor: pointer;
+
+      &:active, &:hover, &::before, &::after, &:focus, &:focus-visible, &:focus-within {
+        outline: none;
+        border: none;
+      }
+    }
+  }
+
+
+  .form__button {
+    margin: 24px 0;
+    background-color: $green-color;
+    color: $white-color;
+    padding: 9px 0;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.14), 0px 1px 5px rgba(0, 0, 0, 0.12);
+  }
+
+
+}
+
+.form__footer {
+  color: white;
+  text-align: center;
+
+  .link {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.err {
+  color: red;
+  padding: 0;
+  margin: 0;
+}
