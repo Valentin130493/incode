@@ -1,10 +1,10 @@
 import React from "react";
-import {createBrowserRouter} from "react-router-dom";
-import {AuthPage, HomePage} from "../pages";
+import {createHashRouter} from "react-router-dom";
+import {AuthPage, ErrorPage, HomePage} from "../pages";
 import {Layout} from "../components";
 import {routes} from "./routes";
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
     {
         path: routes.login,
         element: <AuthPage/>,
@@ -17,4 +17,8 @@ export const router = createBrowserRouter([
             </Layout>
         ),
     },
+    {
+        path: routes.error,
+        element: <ErrorPage/>
+    }
 ]);
