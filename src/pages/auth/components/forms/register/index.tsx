@@ -13,17 +13,19 @@ interface RegisterFormProps {
 }
 
 type FormTypes = {
-    username: string,
+    userName: string,
     password: string,
-    password2: string,
-    fullname: string
+    confirmPassword: string,
+    fullName: string
 }
 
 export const RegisterForm: React.FC<RegisterFormProps> = ({changeForm}) => {
     const {register} = useAuth()
     const [showPassword, setShowPassword] = React.useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = React.useState(false)
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleClickShowConfirmPassword = () => setShowConfirmPassword(prevState => !prevState)
 
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
@@ -34,8 +36,8 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({changeForm}) => {
     }
     const handleSubmit = async (values: FormTypes, {setSubmitting}: any) => {
         const data: RegisterFromInterface = {
-            displayName: values.fullname,
-            username: values.username,
+            displayName: values.fullName,
+            username: values.userName,
             password: values.password
         }
         await register(data)
@@ -47,7 +49,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({changeForm}) => {
             <Logo padding={0}/>
             <h1 className={"form__header"}>Sign Up</h1>
             <Formik
-                initialValues={{fullname: '', username: "", password: "", password2: ''}}
+                initialValues={{fullName: '', userName: "", password: "", confirmPassword: ''}}
                 validationSchema={registrationSchema}
                 onSubmit={handleSubmit}
             >
@@ -68,11 +70,11 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({changeForm}) => {
                             margin={"normal"}
                             label={"Full Name"}
                             type="text"
-                            name="fullname"
+                            name="fullName"
                             onChange={handleChange}
-                            value={values.fullname}
+                            value={values.fullName}
                         />
-                        <p className={"err"}>{errors.fullname && touched.fullname && errors.fullname}</p>
+                        <p className={"err"}>{errors.fullName && touched.fullName && errors.fullName}</p>
 
                         <TextField
                             className={"form__input"}
@@ -81,11 +83,11 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({changeForm}) => {
                             margin={"normal"}
                             label={"User Name"}
                             type="text"
-                            name="username"
+                            name="userName"
                             onChange={handleChange}
-                            value={values.username}
+                            value={values.userName}
                         />
-                        <p className={"err"}> {errors.username && touched.username && errors.username}</p>
+                        <p className={"err"}> {errors.userName && touched.userName && errors.userName}</p>
 
                         <div className={"password_box"}>
                             <TextField
@@ -114,18 +116,18 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({changeForm}) => {
                                 variant="standard"
                                 margin={"normal"}
                                 label={"Confirm Password "}
-                                type={showPassword ? 'text' : 'password'}
-                                name="password2"
+                                type={showConfirmPassword ? 'text' : 'password'}
+                                name="confirmPassword"
                                 onChange={handleChange}
-                                value={values.password2}
+                                value={values.confirmPassword}
                             />
                             <button type={"button"}
-                                    onClick={handleClickShowPassword}
+                                    onClick={handleClickShowConfirmPassword}
                                     onMouseDown={handleMouseDownPassword}>
-                                {showPassword ? <Visibility/> : <VisibilityOff/>}
+                                {showConfirmPassword ? <Visibility/> : <VisibilityOff/>}
                             </button>
                         </div>
-                        <p className={"err"}>{errors.password2 && touched.password2 && errors.password2}</p>
+                        <p className={"err"}>{errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}</p>
                         <button className={"form__button"} type="submit" disabled={isSubmitting}>
                             Submit
                         </button>

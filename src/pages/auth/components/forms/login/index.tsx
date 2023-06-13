@@ -6,7 +6,6 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import {loginSchema} from "../validation";
 import useAuth from "../../../../../hooks/useAuth";
-import {LoginFormInterface} from "../../../../../static";
 import {useNavigate} from "react-router";
 import {routes} from "../../../../../router/routes";
 
@@ -40,7 +39,6 @@ export const LoginForm: React.FC<LoginFormProps> = ({changeForm}) => {
                 initialValues={{username: "", password: "",}}
                 validationSchema={loginSchema}
                 onSubmit={async (values) => {
-                    console.log(values,"in")
                     await login(values)
                     navigate(routes.home)
                 }}

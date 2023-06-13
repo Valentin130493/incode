@@ -1,6 +1,7 @@
 {
   "name": "incode-group",
   "version": "0.1.0",
+  "homepage": "https://Valentin130493.github.io/incode",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.0",
@@ -35,6 +36,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts ."
@@ -62,6 +65,7 @@
     "@typescript-eslint/parser": "^5.59.8",
     "eslint": "^8.42.0",
     "eslint-plugin-react": "^7.32.2",
+    "gh-pages": "^5.0.0",
     "prettier": "^2.8.8",
     "sass": "^1.62.1",
     "typescript": "^5.1.3",
